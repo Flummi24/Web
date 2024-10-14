@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Setze das Hintergrundbild auf das body-Element */
+body {
+    background-image: url('https://images.hdqwalls.com/download/scp-logo-4k-6f-3840x2160.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Sorgt dafür, dass das Bild beim Scrollen fest bleibt */
+}
