@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chips</title>
+    <script>
+        console.error("Could not clear Localstorage")
+    </script>
 </head>
 <body>
     <h1 style="text-align: center; color: darkgoldenrod; size: 35pt;">Chips</h1>
     <h1 style="text-align: center;" id="code2"></h1>
     <script>
-        var code = prompt("Bitte code eingeben")
-        
-        
-        if ( code === "AAAA") {
+        var code = prompt("Bitte Code eingeben")
+if (!JSON.parse(localStorage.getItem('codes'))?.includes(code)) {
+    let codes = JSON.parse(localStorage.getItem('codes')) || [];
+    codes.push(code);
+    localStorage.setItem('codes', JSON.stringify(codes));    
+    if ( code === "AAAA") {
         document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 10€'
         } else {
             if ( code === "BBBB") {
@@ -45,6 +50,9 @@
                 }
             }
         }
-        </script>
+    } else {
+        document.getElementById('code2').textContent = 'Der Code ' + code + ' wurde schon eingelöst bitte verwende einen anderen'
+    }
+    </script>
 </body>
 </html>
