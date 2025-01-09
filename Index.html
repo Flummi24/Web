@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>any_cube</title>
-    <link rel="stylesheet" href="styles.css">
-    <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Abonnieren Button</title>
-    <style>
-        .subscribe-btn {
-            display: inline-block;
-            background-color: #FF0000;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 4px;
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s ease;
-        }
-
-        .subscribe-btn:hover {
-            background-color: #CC0000;
-        }
-
-        .subscribe-btn .icon {
-            margin-right: 10px;
-        }
-    </style>
+    <title>Chips</title>
 </head>
 <body>
-    <h1 style="text-align: center; font-size: 75pt; color: white;">Any_cube</h1>
-    <p style="text-align: center;"><a href="https://www.youtube.com/@any_cube?sub_confirmation=1" class="subscribe-btn" target="_blank">
-        <span class="icon"></span> Abonnieren
-    </a></p>
+    <h1 style="text-align: center; color: darkgoldenrod; size: 35pt;">Chips</h1>
+    <h1 style="text-align: center;" id="code2"></h1>
+    <script>
+        var code = prompt("Bitte code eingeben")
+        
+        
+        if ( code === "AAAA") {
+        document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 10€'
+        } else {
+            if ( code === "BBBB") {
+                document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 20€'
+            } else {
+                if ( code === "CCCC") {
+                    document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 50€'
+                } else {
+                    if ( code === "DDDD") {
+                        document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 100€'
+                    } else {
+                        if ( code === "EEEE") {
+                            document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 500€'
+                        } else {
+                            if ( code === "FFFF") {
+                                document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 1000€'
+                            } else {
+                                if ( code === "GGGG") {
+                                    document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 500.000€'
+                                } else {
+                                    if ( code === "HHHH") {
+                                        document.getElementById('code2').textContent = 'Der Code ' + code + ' ist ein Gewinn von 1000.000€ Das ist der Hauptgewinn Herzlichen Glückwunsch'
+                                    } else {
+                                        document.getElementById('code2').textContent = 'Der Code ' + code + ' ist eine Niete vieleicht hast du nächstest mal mehr GLÜCK!'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        </script>
 </body>
 </html>

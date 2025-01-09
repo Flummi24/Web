@@ -1,3 +1,10 @@
 {
-    "liveServer.settings.port": 3310
+    "liveServer.settings.port": 3312,
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/settings.json",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts",
+        "**/*.json"
+    ]
 }
