@@ -65,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Benutzer bannen
-    elseif (isset($_POST['ban_user'])) {
-        $username_to_ban = $_POST['username_to_ban'];
+    elseif (isset($_POST['action']) && $_POST['action'] == 'ban_user') {
+        $username_to_ban = $_POST['username_to_manage'];
 
         $sql = "UPDATE user SET banned = 1 WHERE username = ?";
         $stmt = $conn->prepare($sql);
@@ -82,8 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Benutzer entbannen
-    elseif (isset($_POST['unban_user'])) {
-        $username_to_unban = $_POST['username_to_unban'];
+    elseif (isset($_POST['action']) && $_POST['action'] == 'unban_user') {
+        $username_to_unban = $_POST['username_to_manage'];
 
         $sql = "UPDATE user SET banned = 0 WHERE username = ?";
         $stmt = $conn->prepare($sql);
@@ -200,12 +200,12 @@ $conn->close();
             <form method="post" action="">
                 <div class="form-group">
                     <label for="username">Benutzername</label>
-                    <input type="text" id="username" name="username" required>
+                    <input maxlength="50" type="text" id="username" name="username" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Passwort</label>
-                    <input type="password" id="password" name="password" required>
+                    <input maxlength="255" type="password" id="password" name="password" required>
                 </div>
 
                 <div class="form-group">

@@ -28,8 +28,8 @@ $isAdmin = ($_SESSION['role'] === 'admin');
                     <a href="verwaltung.php" class="admin-button">Verwaltung</a>
                 <?php endif; ?>
 
-                <a href="#" class="category-button-1">Kategorie 1</a>
-                <a href="#" class="category-button-2">Kategorie 2</a>
+                <a href="chat.php" class="category-button-1">Chat</a>
+                <a href="proxy.php" class="category-button-2">Proxy</a>
                 <a href="#" class="category-button-3">Kategorie 3</a>
             </div>
 
