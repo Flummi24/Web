@@ -6,41 +6,31 @@ if (isset($_SESSION['username'])) {
     exit();
 }
 
-// Einbinden der DB-Verbindungsdaten
 include('db.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Benutzerdaten aus dem Formular (mit anderen Variablennamen)
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];
 
-    // Verbindung zur Datenbank herstellen
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Überprüfen, ob die Verbindung zur DB erfolgreich ist
     if ($conn->connect_error) {
         die("Verbindung fehlgeschlagen: " . $conn->connect_error);
     }
 
-    // SQL-Abfrage, um den Benutzer in der Datenbank zu suchen
     $sql = "SELECT * FROM user WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $input_username);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Überprüfen, ob der Benutzer existiert
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        // Passwort-Überprüfung
         if (password_verify($input_password, $row['password'])) {
-            // Überprüfen, ob der Benutzer gebannt ist
             if ($row['banned'] == 1) {
-                // Wenn gesperrt, weiterleiten zur gesperrten Seite
                 header("Location: banned.php");
                 exit();
             } else {
-                // Erfolgreiche Anmeldung
                 $_SESSION['username'] = $input_username;
                 $_SESSION['role'] = $row['role'];
                 header("Location: dashboard.php");
@@ -53,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Benutzername nicht gefunden.";
     }
 
-    // Verbindung schließen
     $conn->close();
 }
 ?>
@@ -64,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: 'Arial', sans-serif;

@@ -1,9 +1,15 @@
+<?php
+ if (!isset($_SESSION['username'])) {
+    header("location: login.php");
+ }
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benutzer gesperrt</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             background-color: #d3d3d3; /* Hellgrauer Hintergrund */

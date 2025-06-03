@@ -2,18 +2,15 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["url"])) {
     $url = filter_var($_POST["url"], FILTER_VALIDATE_URL);
     if ($url) {
-        // Hier setzen wir den Header, um sicherzustellen, dass wir die deutsche Seite laden
         $ch = curl_init($url);
 
-        // Setze den Accept-Language Header auf "de" für Deutsch
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Accept-Language: de"
         ));
 
-        // Wir setzen Optionen, um den HTML-Inhalt zu laden
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Timeout verhindern
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
         $response = curl_exec($ch);
 
@@ -36,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["url"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Proxy</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;

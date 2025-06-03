@@ -1,9 +1,13 @@
 /* Allgemeines Styling */
-body {
+.body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+}
+
+body {
+    background-color: lightgreen !important;
 }
 
 /* Navigation-Bar */
@@ -11,20 +15,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    padding: 35px;
+    background-color: white;
+    padding: 20px;
 }
 
-/* Container für Buttons */
 .nav-buttons-container {
     display: flex;
-    justify-content: center; /* Standard: Buttons in der Mitte */
-    align-items: center;
-    width: 70%;
-    gap: 30px; /* Abstand zwischen den Buttons */
-    position: absolute;
-    top: auto;
-    left: 15%;
+    gap: 20px;
 }
 
 /* Button Styling */
@@ -93,4 +90,72 @@ main {
     margin-top: 50px;
     text-align: center;
     padding: 20px;
+}
+
+h2 {
+        color: #2c3e50;
+    }
+
+    /* Programme-Bereich */
+.programme-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.programme-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.programme-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.programme-card:hover {
+    transform: translateY(-6px);
+}
+
+
+.programme-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.programme-name {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.programme-title-wrapper {
+    width: 100%;
+    padding: 0 5%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.programme-titel {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.welcome-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 40px;
+    text-align: center;
 }

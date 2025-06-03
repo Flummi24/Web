@@ -3,7 +3,6 @@ session_start();
 
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
-    exit();
 }
 
 include('db.php');
@@ -108,6 +107,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benutzerverwaltung</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;

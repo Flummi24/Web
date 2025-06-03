@@ -1,25 +1,23 @@
 <?php
+
 session_start();
-include('db.php'); // Lade die Variablen für die DB-Verbindung
+include('db.php');
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login");
+    header("Location: login.php");
     exit();
 }
 
-// Stelle die Verbindung zur Datenbank her
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }
 
-// Nachricht absenden
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
-    $username = $_SESSION['username']; // Benutzername aus der Session (angenommen, der Benutzer ist eingeloggt)
+    $username = $_SESSION['username'];
     $message = $_POST['message'];
 
-    // Nachricht in die Datenbank einfügen
     $sql = "INSERT INTO chat (username, message) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $message);
@@ -33,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
     $stmt->close();
 }
 
-// Alle Nachrichten abfragen
 $sql = "SELECT * FROM chat ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
@@ -46,6 +43,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,9 +51,9 @@ $conn->close();
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; /* Zentriert den Inhalt horizontal */
-            align-items: center;     /* Zentriert den Inhalt vertikal */
-            height: 100vh;           /* Vollständige Höhe des Viewports */
+            justify-content: center;
+            align-items: center;  
+            height: 100vh;          
         }
 
         .chat-container {
@@ -67,13 +65,13 @@ $conn->close();
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            height: 90vh; /* Set height to 80% of the viewport */
+            height: 90vh;
         }
 
         h1 {
             text-align: left;
             color: #333;
-            flex: 1; /* To ensure it takes available space */
+            flex: 1;
         }
 
         .header-container {
@@ -84,12 +82,12 @@ $conn->close();
         }
 
         .messages {
-            flex: 1; /* Take up available space */
-            overflow-y: scroll; /* Enable scrolling */
+            flex: 1;
+            overflow-y: scroll;
             margin-bottom: 20px;
             padding-right: 10px;
             display: flex;
-            flex-direction: column-reverse; /* Ensure new messages appear at the bottom */
+            flex-direction: column-reverse; 
         }
 
         .message {
@@ -115,13 +113,13 @@ $conn->close();
 
         input[type="text"] {
             flex: 1;
-            padding: 15px;  /* Größeren Abstand innerhalb des Eingabefelds */
+            padding: 15px;
             margin-right: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            font-size: 18px;  /* Größere Schriftgröße */
-            height: 10px;  /* Höheres Eingabefeld */
-            width: 220%;    /* Das Eingabefeld nimmt den verfügbaren Platz ein */
+            font-size: 18px;  
+            height: 10px;  
+            width: 220%; 
         }
 
         .send-button {
@@ -131,7 +129,7 @@ $conn->close();
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 200px; /* Button breiter machen */
+            width: 200px; 
             }
 
 .send-button:hover {
@@ -165,21 +163,17 @@ $conn->close();
     <div class="chat-container">
         <div class="header-container">
             <h1>Chat</h1>
-            <!-- Dashboard-Button rechts im Header -->
             <a href="dashboard.php"><button class="dashboard-button">Zum Dashboard</button></a>
         </div>
 
-        <!-- Nachrichtenbereich -->
         <div class="messages">
             <?php
-            // Zeige alle Nachrichten aus der DB an
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='message'><span>{$row['username']}:</span><span class='message-text'> {$row['message']}</span></div>";
             }
             ?>
         </div>
 
-        <!-- Nachricht eingeben -->
         <div class="input-area">
             <form method="POST" action="">
                 <input type="text" name="message" placeholder="Gib deine Nachricht ein..." required>
@@ -188,7 +182,6 @@ $conn->close();
         </div>
 
         <?php
-        // Nachricht Statusanzeige
         if (isset($message_status)) {
             echo "<div class='message-status'>$message_status</div>";
         }
