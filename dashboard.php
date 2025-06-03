@@ -192,6 +192,19 @@ h2 {
     color: #7f8c8d;
 }
 
+.programme-title {
+    font-size: 28px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.programme-link {
+    font-size: 28px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 .programme-title-wrapper {
     width: 100%;
     padding: 0 5%;
@@ -225,7 +238,7 @@ h2 {
                     <?php endif; ?>
                     <a href="chat.php" class="category-button-1">Chat</a>
                     <a href="proxy.php" class="category-button-2">Proxy</a>
-                    <a href="upload.php" class="category-button-3">UPLOAD</a>
+                    <a href="upload.php" class="category-button-3">Upload</a>
                 </div>
                 <a href="logout.php" class="logout-button">Logout</a>
             </div>
@@ -235,7 +248,9 @@ h2 {
 
         <div class="programme-section">
             <div class="programme-title-wrapper">
-                <h3 class="programme-title">PROGRAMME &gt;</h3>
+                <h3 class="programme-title">
+                  <a href="programme.php" class="programme-link">PROGRAMME &gt;</a>
+                </h3>
             </div>
             <div class="programme-grid">
               <?php foreach ($programme as $prog): ?>
