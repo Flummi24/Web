@@ -239,7 +239,7 @@ h2 {
                     <a href="chat.php" class="category-button-1">Chat</a>
                     <a href="proxy.php" class="category-button-2">Proxy</a>
                     <a href="upload.php" class="category-button-3">Upload</a>
-                </div>
+                    </div>
                 <a href="logout.php" class="logout-button">Logout</a>
             </div>
         </header>
@@ -253,15 +253,20 @@ h2 {
                 </h3>
             </div>
             <div class="programme-grid">
-              <?php foreach ($programme as $prog): ?>
+              <?php
+              $anzahl = 0;
+              foreach ($programme as $prog):
+                if ($anzahl >= 5) break;
+                $anzahl++;
+                ?>
               <a href="download.php?file=<?php echo urlencode($prog['name']); ?>" class="programme-card" style="text-decoration: none; color: inherit;">
               <div class="programme-image">
-                <img src="data:image/jpeg;base64,<?php echo $prog['bild_base64']; ?>" alt="Bild" />
-              </div>
-              <div class="programme-titel"><?php echo htmlspecialchars($prog['titel']); ?></div>
-              <div class="programme-name"><?php echo htmlspecialchars($prog['name']); ?></div>
-              </a>
-            <?php endforeach; ?>
+            <img src="data:image/jpeg;base64,<?php echo $prog['bild_base64']; ?>" alt="Bild" />
+             </div>
+               <div class="programme-titel"><?php echo htmlspecialchars($prog['titel']); ?></div>
+             <div class="programme-name"><?php echo htmlspecialchars($prog['name']); ?></div>
+            </a>
+             <?php endforeach; ?>
           </div>
         </div>
     </div>

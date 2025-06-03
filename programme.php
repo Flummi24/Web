@@ -85,6 +85,18 @@ $conn->close();
             font-size: 35px;
             margin-bottom: 40px;
         }
+
+        .button_back {
+            width: 70%;
+            padding: 12px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +111,7 @@ $conn->close();
                 <div class="programme-name"><?php echo htmlspecialchars($prog['name']); ?></div>
             </a>
         <?php endforeach; ?>
+        <a href="dashboard.php" class="button_back" style="display: inline-block; text-align: center;">Zurück</a>
     </div>
 </body>
 </html>
